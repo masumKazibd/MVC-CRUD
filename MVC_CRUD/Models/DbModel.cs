@@ -23,6 +23,6 @@ namespace MVC_CRUD.Models
 
     public class EmployeeDbContext : DbContext
     {
-        public DbSet<Employee> DbSet { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }
