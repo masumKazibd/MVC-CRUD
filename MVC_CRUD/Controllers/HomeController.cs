@@ -27,6 +27,30 @@ namespace MVC_CRUD.Controllers
             };
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(Employee Emp)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Employees.Add(Emp);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.deptList = new List<SelectListItem>
+            {
+                new SelectListItem{Text="IT", Value="IT"},
+                new SelectListItem{Text="Accounts", Value="Accounts"},
+                new SelectListItem{Text="HR", Value="HR"},
+                new SelectListItem{Text="Production", Value="Production"},
+                new SelectListItem{Text="Marketing", Value= "Marketing"},
+                new SelectListItem{Text="----Select----", Value="", Selected=true}
+            };
+            return View(Emp);
+        }
+        public ActionResult Edit()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
