@@ -9,7 +9,7 @@
                 <div class="card-title">Employee List</div>
                 <h6 class="card-subtitle d-flex justify-content-between text-muted">
                     Manage Employee                 
-                    <a href="#" class="btn btn-primary d-flex justify-content-end"><i class="fa fa-plus"></i></a>
+                    <a href="@Url.Action("Create", "Home")" class="btn btn-primary d-flex justify-content-end"><i class="fa fa-plus"></i></a>
                 </h6>
             </div>
             <div class="card-body">
@@ -20,6 +20,7 @@
                             <th>@Html.DisplayNameFor(x=>x.Name)</th>
                             <th>@Html.DisplayNameFor(x=>x.Grade)</th>
                             <th>@Html.DisplayNameFor(x=>x.Department)</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,29 +31,16 @@
                                 <td>@Html.DisplayFor(x=>item.Name)</td>
                                 <td>@Html.DisplayFor(x=>item.Grade)</td>
                                 <td>@Html.DisplayFor(x=>item.Department)</td>
-                                <td>@Html.ActionLink("Edit", "Edit", new {id = item.Id }, new { @class="btn btn-success" } )</td>
-                                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new {@class="btn btn-danger"})</td>
+                                <td>@Html.ActionLink("Edit", "Edit", new {id = item.Id }, new { @class="btn btn-success" } )
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new {@class="btn btn-danger"})
+                                </td>
                             </tr>
                         }
                     </tbody>
-                    @*<tbody>
-                        @foreach(var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(x=>item.Id)</td>
-                                <td>@Html.DisplayFor(x=>item.Name)</td>
-                                <td>@Html.DisplayFor(x=>item.Grade)</td>
-                                <td>@Html.DisplayFor(x=>item.Department)</td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new {@class="btn btn-sucess"})
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Delete", "Delete", new {id= item.Id}, new { @class = "btn btn-danger" })
-                                </td>
-                            </tr>
-                        }
-                    </tbody>*@
                 </table>
+            </div>
+            <div class="card-footer">
+                @Model.Count() Employees Found
             </div>
         </div>
 

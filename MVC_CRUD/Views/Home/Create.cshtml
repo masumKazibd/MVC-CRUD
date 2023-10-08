@@ -1,0 +1,47 @@
+﻿@model MVC_CRUD.Models.Employee
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card m-2">
+    <div class="card-header">
+        <h4 class="card-title">Add New Employee</h4>
+
+        <h6 class="card-body d-flex justify-content-between text-muted">Fill up the form and save data</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+        {
+            <div class="row mb-1">
+                @Html.LabelFor(x => x.Name, new { @class = "col-form-label col-form-label-sm col-2 r" })
+                <div class="col-8">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-sm" })
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-1">
+                @Html.LabelFor(x => x.Grade, new { @class = "col-form-label col-form-label-sm col-2 r" })
+                <div class="col-8">
+                    @Html.EnumDropDownListFor(x => x.Grade, "---Select---", new { @class = "form-select form-select-sm" })
+                </div>
+            </div>
+            <div class="row mb-1">
+                @Html.LabelFor(x=>x.Department, new { @class = "col-form-label col-form-label-sm col-2 r"})
+                <div class="col-8">
+                    @Html.DropDownListFor(x=> x.Department, ViewBag.deptList as IEnumerable<SelectListItem>, new {@class = "form-control"})
+                </div>
+                <div class="col-2">
+                    @Html.ValidationMessageFor(x=> x.Department,"", new {@class = "text-danger"} )
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-10 offset-2 mt-2">
+                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
