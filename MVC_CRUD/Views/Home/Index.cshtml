@@ -32,9 +32,8 @@
                                 <td>@Html.DisplayFor(x=>item.Grade)</td>
                                 <td>@Html.DisplayFor(x=>item.Department)</td>
                                 <td>
-                                    @*@Html.ActionLink("Edit", "Edit", new {id = })*@
-                                    <a href="@Url.Action("Edit","Home", new {id = item.Id})" class=" btn btn-info"> <i class="fa fa-edit"></i> </a>
-                                    <a href="@Url.Action("Delete","Home")" class=" btn btn-danger"> <i class="fa fa-trash"></i> </a>
+                                    <a href="@Url.Action("Edit","Home", new {id = item.Id})" class=" btn btn-success btn-sm"> <i class="fa fa-edit"></i> </a>
+                                    <a href="@Url.Action("Delete","Home")" class=" btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
                                 </td>
                             </tr>
                         }

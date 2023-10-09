@@ -47,9 +47,39 @@ namespace MVC_CRUD.Controllers
             };
             return View(Emp);
         }
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            ViewBag.deptList = new List<SelectListItem>
+            {
+                new SelectListItem{Text="IT", Value="IT"},
+                new SelectListItem{Text="Accounts", Value="Accounts"},
+                new SelectListItem{Text="HR", Value="HR"},
+                new SelectListItem{Text="Production", Value="Production"},
+                new SelectListItem{Text="Marketing", Value= "Marketing"},
+                new SelectListItem{Text="----Select----", Value="", Selected=true}
+            };
+            return View(db.Employees.First(x=>x.Id== id));
+        }
+        [HttpPost]
+        public ActionResult Edit(Employee emp)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.deptList = new List<SelectListItem>
+            {
+                new SelectListItem{Text="IT", Value="IT"},
+                new SelectListItem{Text="Accounts", Value="Accounts"},
+                new SelectListItem{Text="HR", Value="HR"},
+                new SelectListItem{Text="Production", Value="Production"},
+                new SelectListItem{Text="Marketing", Value= "Marketing"},
+                new SelectListItem{Text="----Select----", Value="", Selected=true}
+            };
+            return View(emp);
+
         }
         public ActionResult About()
         {
