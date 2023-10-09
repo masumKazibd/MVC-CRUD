@@ -81,6 +81,30 @@ namespace MVC_CRUD.Controllers
             return View(emp);
 
         }
+
+        public ActionResult Delete(int id)
+        {
+            Employee emp = db.Employees.First(x => x.Id == id);
+            ViewBag.deptList = new List<SelectListItem>
+            {
+            new SelectListItem {Text="It",Value="IT"},
+            new SelectListItem {Text="HR",Value="HR"},
+            new SelectListItem {Text="Marketing",Value="Marketing"},
+            new SelectListItem{Text="--Select--",Value="",Selected=true}
+
+            };
+
+            return View(emp);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult doDelete(int id)
+        {
+            Employee emp = db.Employees.First(x => x.Id == id);
+            db.Entry(emp).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

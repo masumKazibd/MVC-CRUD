@@ -46,7 +46,7 @@
     </div>
     <div class="card-footer">
         <div>
-            @Html.ActionLink("BackToList", "Index", "Home", new { }, new { @class = "btn btn-primary" })
+            <a href="@Url.Action("Index", "Home")" class="btn btn-link btn-info btn-sm" style="text-decoration: none;"><i class="fa fa-arrow-circle-left"></i>Back to list</a>
         </div>
     </div>
 </div>

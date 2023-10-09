@@ -13,7 +13,7 @@
     <div class="card-body">
         @using (Html.BeginForm("Create", "Home", FormMethod.Post))
         {
-            <div class="row mb-1">
+            <div class="row mb-2">
                 @Html.LabelFor(x => x.Name, new { @class = "col-form-label col-form-label-sm col-2 r" })
                 <div class="col-8">
                     @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-sm" })
@@ -22,13 +22,13 @@
                     @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-2">
                 @Html.LabelFor(x => x.Grade, new { @class = "col-form-label col-form-label-sm col-2 r" })
                 <div class="col-8">
                     @Html.EnumDropDownListFor(x => x.Grade, "---Select---", new { @class = "form-select form-select-sm" })
                 </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-2">
                 @Html.LabelFor(x=>x.Department, new { @class = "col-form-label col-form-label-sm col-2 r"})
                 <div class="col-8">
                     @Html.DropDownListFor(x=> x.Department, ViewBag.deptList as IEnumerable<SelectListItem>, new {@class = "form-control"})
@@ -37,7 +37,7 @@
                     @Html.ValidationMessageFor(x=> x.Department,"", new {@class = "text-danger"} )
                 </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-2">
                 <div class="col-10 offset-2 mt-2">
                     <button class="btn btn-primary btn-sm" type="submit">Save</button>
                 </div>
@@ -46,7 +46,7 @@
     </div>
     <div class="card-footer">
         <div>
-            @Html.ActionLink("BackToList", "Index", "Home", new {}, new { @class = "btn btn-primary"})
+            <a href="@Url.Action("Index", "Home")" class="btn btn-link btn-info btn-sm" style="text-decoration: none;"><i class="fa fa-arrow-circle-left"></i> Back to list</a>
         </div>
     </div>
 </div>
